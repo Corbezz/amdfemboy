@@ -118,34 +118,143 @@ var ASSEMBLY_FEE=60;
 var EUR=function(n){return n.toLocaleString("it-IT",{style:"currency",currency:"EUR",maximumFractionDigits:0})};
 // Prezzi e componenti di esempio: sostituiscili con il tuo listino
 var CATS=[
-{id:"cpu",name:"Processore",items:[
- {n:"AMD Ryzen 5 5600",p:130,sock:"AM4",w:65},{n:"AMD Ryzen 5 7600",p:220,sock:"AM5",w:65},
- {n:"AMD Ryzen 7 7800X3D",p:420,sock:"AM5",w:120},{n:"Intel Core i5-13400F",p:200,sock:"LGA1700",w:65},{n:"Intel Core i7-14700K",p:400,sock:"LGA1700",w:125}]},
-{id:"mb",name:"Scheda madre",items:[
- {n:"MSI B550 Gaming",p:120,sock:"AM4",ram:"DDR4"},{n:"Gigabyte B650 Aorus",p:170,sock:"AM5",ram:"DDR5"},
- {n:"ASUS X670E TUF",p:320,sock:"AM5",ram:"DDR5"},{n:"MSI B760 Tomahawk",p:160,sock:"LGA1700",ram:"DDR5"},{n:"ASUS Z790 Prime",p:260,sock:"LGA1700",ram:"DDR5"}]},
-{id:"ram",name:"RAM",items:[
- {n:"16 GB DDR4 3200",p:45,ram:"DDR4"},{n:"16 GB DDR5 6000",p:70,ram:"DDR5"},{n:"32 GB DDR5 6000",p:120,ram:"DDR5"},{n:"64 GB DDR5 6000",p:230,ram:"DDR5"}]},
-{id:"gpu",name:"Scheda video",items:[
- {n:"NVIDIA RTX 4060 8 GB",p:300,w:115},{n:"AMD RX 7800 XT 16 GB",p:500,w:263},{n:"NVIDIA RTX 4070 Super 12 GB",p:620,w:220},{n:"NVIDIA RTX 4080 Super 16 GB",p:1050,w:320}]},
-{id:"ssd",name:"Archiviazione",items:[
- {n:"SSD NVMe 500 GB",p:45},{n:"SSD NVMe 1 TB",p:75},{n:"SSD NVMe 2 TB",p:140}]},
-{id:"cool",name:"Dissipatore",items:[
- {n:"Torre ad aria 120 mm",p:30,w:130},{n:"Torre ad aria doppia ventola",p:55,w:200},{n:"AIO 240 mm",p:90,w:250},{n:"AIO 360 mm",p:140,w:300}]},
-{id:"psu",name:"Alimentatore",items:[
- {n:"550 W 80+ Bronze",p:70,w:550},{n:"750 W 80+ Gold",p:100,w:750},{n:"850 W 80+ Gold",p:130,w:850},{n:"1000 W 80+ Gold",p:180,w:1000}]},
-{id:"case",name:"Case",items:[
- {n:"Case ATX airflow nero",p:70},{n:"Case ATX vetro bianco",p:95},{n:"Case compatto mid-tower",p:80}]}
+ {id:"cpu",name:"Processore",items:[
+  {n:"AMD Ryzen 5 5600",p:130,sock:"AM4",w:65,t:4},
+  {n:"AMD Ryzen 5 7600",p:220,sock:"AM5",w:65,t:5},
+  {n:"AMD Ryzen 7 7800X3D",p:420,sock:"AM5",w:120,t:9},
+  {n:"Intel Core i5-13400F",p:200,sock:"LGA1700",w:65,t:5},
+  {n:"Intel Core i7-14700K",p:400,sock:"LGA1700",w:125,t:8},
+  {n:"AMD Ryzen 7 5700X3D",p:250,sock:"AM4",w:105,t:6},
+  {n:"AMD Ryzen 5 9600X",p:270,sock:"AM5",w:65,t:6},
+  {n:"AMD Ryzen 7 9700X",p:340,sock:"AM5",w:65,t:7},
+  {n:"AMD Ryzen 9 7900X",p:380,sock:"AM5",w:170,t:8},
+  {n:"AMD Ryzen 9 9950X",p:600,sock:"AM5",w:170,t:10},
+  {n:"Intel Core i3-12100F",p:100,sock:"LGA1700",w:58,t:3},
+  {n:"Intel Core i5-14600K",p:320,sock:"LGA1700",w:125,t:7},
+  {n:"Intel Core i9-14900K",p:520,sock:"LGA1700",w:125,t:9},
+  {n:"AMD Ryzen 5 5500",p:95,sock:"AM4",w:65,t:3},
+  {n:"AMD Ryzen 7 5800X3D",p:300,sock:"AM4",w:105,t:7},
+  {n:"AMD Ryzen 5 7500F",p:170,sock:"AM5",w:65,t:5},
+  {n:"AMD Ryzen 7 7700",p:290,sock:"AM5",w:65,t:6},
+  {n:"AMD Ryzen 9 7950X3D",p:560,sock:"AM5",w:120,t:10},
+  {n:"AMD Ryzen 7 9800X3D",p:480,sock:"AM5",w:120,t:10},
+  {n:"Intel Core i5-12400F",p:130,sock:"LGA1700",w:65,t:4},
+  {n:"Intel Core i5-12600K",p:190,sock:"LGA1700",w:125,t:5},
+  {n:"Intel Core i7-13700K",p:330,sock:"LGA1700",w:125,t:8},
+  {n:"Intel Core Ultra 5 245K",p:310,sock:"LGA1851",w:125,t:7},
+  {n:"Intel Core Ultra 7 265K",p:400,sock:"LGA1851",w:125,t:8}]},
+ {id:"mb",name:"Scheda madre",items:[
+  {n:"MSI B550 Gaming",p:120,sock:"AM4",ram:"DDR4",q:2,f:"ATX"},
+  {n:"Gigabyte B650 Aorus",p:170,sock:"AM5",ram:"DDR5",q:2,f:"ATX"},
+  {n:"ASUS X670E TUF",p:320,sock:"AM5",ram:"DDR5",q:3,f:"ATX"},
+  {n:"MSI B760 Tomahawk",p:160,sock:"LGA1700",ram:"DDR5",q:2,f:"ATX"},
+  {n:"ASUS Z790 Prime",p:260,sock:"LGA1700",ram:"DDR5",q:3,f:"ATX"},
+  {n:"ASRock B550M Pro4",p:95,sock:"AM4",ram:"DDR4",q:1,f:"mATX"},
+  {n:"MSI B650M Mortar",p:190,sock:"AM5",ram:"DDR5",q:2,f:"mATX"},
+  {n:"ASUS ROG Strix B650E-F",p:260,sock:"AM5",ram:"DDR5",q:3,f:"ATX"},
+  {n:"Gigabyte H610M (DDR4)",p:85,sock:"LGA1700",ram:"DDR4",q:1,f:"mATX"},
+  {n:"MSI PRO B760-P (DDR4)",p:115,sock:"LGA1700",ram:"DDR4",q:1,f:"ATX"},
+  {n:"ASUS ROG Strix Z790-E",p:420,sock:"LGA1700",ram:"DDR5",q:3,f:"ATX"},
+  {n:"MSI B450 Tomahawk Max II",p:75,sock:"AM4",ram:"DDR4",q:1,f:"ATX"},
+  {n:"Gigabyte X570 Aorus Elite",p:170,sock:"AM4",ram:"DDR4",q:3,f:"ATX"},
+  {n:"ASRock A620M-HDV",p:85,sock:"AM5",ram:"DDR5",q:1,f:"mATX"},
+  {n:"MSI MAG B850 Tomahawk",p:230,sock:"AM5",ram:"DDR5",q:2,f:"ATX"},
+  {n:"Gigabyte X870E Aorus Elite",p:400,sock:"AM5",ram:"DDR5",q:3,f:"ATX"},
+  {n:"ASUS ROG Strix B650E-I (ITX)",p:300,sock:"AM5",ram:"DDR5",q:3,f:"ITX"},
+  {n:"MSI MPG B760I Edge (ITX)",p:230,sock:"LGA1700",ram:"DDR5",q:2,f:"ITX"},
+  {n:"MSI PRO Z890-P",p:230,sock:"LGA1851",ram:"DDR5",q:2,f:"ATX"},
+  {n:"ASUS ROG Strix Z890-E",p:450,sock:"LGA1851",ram:"DDR5",q:3,f:"ATX"}]},
+ {id:"ram",name:"RAM",items:[
+  {n:"16 GB DDR4 3200",p:45,ram:"DDR4"},
+  {n:"16 GB DDR5 6000",p:70,ram:"DDR5"},
+  {n:"32 GB DDR5 6000",p:120,ram:"DDR5"},
+  {n:"64 GB DDR5 6000",p:230,ram:"DDR5"},
+  {n:"32 GB DDR4 3600",p:75,ram:"DDR4"},
+  {n:"16 GB DDR5 5600",p:60,ram:"DDR5"},
+  {n:"32 GB DDR5 6400 RGB",p:140,ram:"DDR5"},
+  {n:"96 GB DDR5 5600",p:330,ram:"DDR5"},
+  {n:"16 GB DDR4 3600",p:50,ram:"DDR4"},
+  {n:"64 GB DDR4 3200",p:130,ram:"DDR4"},
+  {n:"32 GB DDR5 5600",p:95,ram:"DDR5"},
+  {n:"64 GB DDR5 6400",p:260,ram:"DDR5"}]},
+ {id:"gpu",name:"Scheda video",items:[
+  {n:"NVIDIA RTX 4060 8 GB",p:300,w:115,t:4},
+  {n:"AMD RX 7800 XT 16 GB",p:500,w:263,t:6},
+  {n:"NVIDIA RTX 4070 Super 12 GB",p:620,w:220,t:7},
+  {n:"NVIDIA RTX 4080 Super 16 GB",p:1050,w:320,t:9},
+  {n:"NVIDIA RTX 3060 12 GB",p:260,w:170,t:3},
+  {n:"AMD RX 7600 8 GB",p:260,w:165,t:3},
+  {n:"NVIDIA RTX 4060 Ti 8 GB",p:400,w:160,t:5},
+  {n:"AMD RX 7700 XT 12 GB",p:430,w:245,t:6},
+  {n:"AMD RX 7900 GRE 16 GB",p:550,w:260,t:6},
+  {n:"NVIDIA RTX 5070 12 GB",p:620,w:250,t:7},
+  {n:"NVIDIA RTX 4070 Ti Super 16 GB",p:850,w:285,t:8},
+  {n:"AMD RX 7900 XTX 24 GB",p:900,w:355,t:8},
+  {n:"NVIDIA RTX 5080 16 GB",p:1100,w:360,t:9},
+  {n:"NVIDIA RTX 4090 24 GB",p:1900,w:450,t:10},
+  {n:"NVIDIA RTX 3050 6 GB",p:180,w:70,t:2},
+  {n:"Intel Arc B580 12 GB",p:270,w:190,t:4},
+  {n:"NVIDIA RTX 5060 8 GB",p:320,w:145,t:4},
+  {n:"NVIDIA RTX 5060 Ti 16 GB",p:480,w:180,t:5},
+  {n:"AMD RX 9060 XT 16 GB",p:400,w:160,t:5},
+  {n:"AMD RX 9070 16 GB",p:600,w:220,t:7},
+  {n:"AMD RX 9070 XT 16 GB",p:700,w:304,t:8},
+  {n:"NVIDIA RTX 5070 Ti 16 GB",p:900,w:300,t:8},
+  {n:"NVIDIA RTX 5090 32 GB",p:2400,w:575,t:10}]},
+ {id:"ssd",name:"Archiviazione",items:[
+  {n:"SSD NVMe 500 GB",p:45},
+  {n:"SSD NVMe 1 TB",p:75},
+  {n:"SSD NVMe 2 TB",p:140},
+  {n:"SSD NVMe Gen4 1 TB",p:85},
+  {n:"SSD NVMe Gen4 2 TB",p:160},
+  {n:"SSD NVMe 4 TB",p:260},
+  {n:"SSD SATA 1 TB",p:60},
+  {n:"HDD 2 TB",p:55},
+  {n:"HDD 4 TB",p:90},
+  {n:"SSD NVMe Gen4 500 GB",p:55},
+  {n:"SSD NVMe Gen4 1 TB alte prestazioni",p:110},
+  {n:"SSD SATA 2 TB",p:110},
+  {n:"SSD NVMe Gen5 2 TB",p:230}]},
+ {id:"cool",name:"Dissipatore",items:[
+  {n:"Torre ad aria 120 mm",p:30,w:130},
+  {n:"Torre ad aria doppia ventola",p:55,w:200},
+  {n:"AIO 240 mm",p:90,w:250},
+  {n:"AIO 360 mm",p:140,w:300},
+  {n:"Dissipatore low-profile",p:25,w:95},
+  {n:"Doppia torre 140 mm",p:45,w:250},
+  {n:"AIO 280 mm",p:110,w:270},
+  {n:"Torre ad aria compatta",p:25,w:150},
+  {n:"Torre ad aria premium 160 mm",p:70,w:230},
+  {n:"AIO 360 mm premium",p:170,w:350},
+  {n:"AIO 420 mm",p:190,w:380}]},
+ {id:"psu",name:"Alimentatore",items:[
+  {n:"550 W 80+ Bronze",p:70,w:550},
+  {n:"750 W 80+ Gold",p:100,w:750},
+  {n:"850 W 80+ Gold",p:130,w:850},
+  {n:"1000 W 80+ Gold",p:180,w:1000},
+  {n:"650 W 80+ Bronze",p:80,w:650},
+  {n:"650 W 80+ Gold",p:90,w:650},
+  {n:"750 W 80+ Gold modulare",p:110,w:750},
+  {n:"1200 W 80+ Platinum",p:240,w:1200},
+  {n:"500 W 80+ Bronze",p:50,w:500},
+  {n:"750 W 80+ Bronze",p:85,w:750},
+  {n:"850 W 80+ Platinum modulare",p:160,w:850},
+  {n:"1000 W 80+ Platinum",p:210,w:1000},
+  {n:"1300 W 80+ Platinum",p:320,w:1300}]},
+ {id:"case",name:"Case",items:[
+  {n:"Case ATX airflow nero",p:70,f:"ATX"},
+  {n:"Case ATX vetro bianco",p:95,f:"ATX"},
+  {n:"Case compatto mid-tower",p:80,f:"mATX"},
+  {n:"Mini-ITX compatto",p:85,f:"ITX"},
+  {n:"Full tower",p:130,f:"ATX"},
+  {n:"Mesh frontale airflow",p:65,f:"ATX"},
+  {n:"Dual chamber vetro",p:110,f:"ATX"},
+  {n:"Case silenzioso insonorizzato",p:100,f:"ATX"},
+  {n:"Micro-ATX compatto con vetro",p:60,f:"mATX"},
+  {n:"Mid-tower 4 ventole RGB",p:85,f:"ATX"},
+  {n:"ATX premium alluminio",p:160,f:"ATX"},
+  {n:"Case ITX ventilato",p:110,f:"ITX"}]}
 ];
-function ext(id,a){var c=CATS.filter(function(x){return x.id===id})[0];a.forEach(function(x){c.items.push(x)})}
-ext("cpu",[{n:"AMD Ryzen 7 5700X3D",p:250,sock:"AM4",w:105},{n:"AMD Ryzen 5 9600X",p:270,sock:"AM5",w:65},{n:"AMD Ryzen 7 9700X",p:340,sock:"AM5",w:65},{n:"AMD Ryzen 9 7900X",p:380,sock:"AM5",w:170},{n:"AMD Ryzen 9 9950X",p:600,sock:"AM5",w:170},{n:"Intel Core i3-12100F",p:100,sock:"LGA1700",w:58},{n:"Intel Core i5-14600K",p:320,sock:"LGA1700",w:125},{n:"Intel Core i9-14900K",p:520,sock:"LGA1700",w:125}]);
-ext("mb",[{n:"ASRock B550M Pro4",p:95,sock:"AM4",ram:"DDR4"},{n:"MSI B650M Mortar",p:190,sock:"AM5",ram:"DDR5"},{n:"ASUS ROG Strix B650E-F",p:260,sock:"AM5",ram:"DDR5"},{n:"Gigabyte H610M (DDR4)",p:85,sock:"LGA1700",ram:"DDR4"},{n:"MSI PRO B760-P (DDR4)",p:115,sock:"LGA1700",ram:"DDR4"},{n:"ASUS ROG Strix Z790-E",p:420,sock:"LGA1700",ram:"DDR5"}]);
-ext("ram",[{n:"32 GB DDR4 3600",p:75,ram:"DDR4"},{n:"16 GB DDR5 5600",p:60,ram:"DDR5"},{n:"32 GB DDR5 6400 RGB",p:140,ram:"DDR5"},{n:"96 GB DDR5 5600",p:330,ram:"DDR5"}]);
-ext("gpu",[{n:"NVIDIA RTX 3060 12 GB",p:260,w:170},{n:"AMD RX 7600 8 GB",p:260,w:165},{n:"NVIDIA RTX 4060 Ti 8 GB",p:400,w:160},{n:"AMD RX 7700 XT 12 GB",p:430,w:245},{n:"AMD RX 7900 GRE 16 GB",p:550,w:260},{n:"NVIDIA RTX 5070 12 GB",p:620,w:250},{n:"NVIDIA RTX 4070 Ti Super 16 GB",p:850,w:285},{n:"AMD RX 7900 XTX 24 GB",p:900,w:355},{n:"NVIDIA RTX 5080 16 GB",p:1100,w:360},{n:"NVIDIA RTX 4090 24 GB",p:1900,w:450}]);
-ext("ssd",[{n:"SSD NVMe Gen4 1 TB",p:85},{n:"SSD NVMe Gen4 2 TB",p:160},{n:"SSD NVMe 4 TB",p:260},{n:"SSD SATA 1 TB",p:60},{n:"HDD 2 TB",p:55},{n:"HDD 4 TB",p:90}]);
-ext("cool",[{n:"Dissipatore low-profile",p:25,w:95},{n:"Doppia torre 140 mm",p:45,w:250},{n:"AIO 280 mm",p:110,w:270}]);
-ext("psu",[{n:"650 W 80+ Bronze",p:80,w:650},{n:"650 W 80+ Gold",p:90,w:650},{n:"750 W 80+ Gold modulare",p:110,w:750},{n:"1200 W 80+ Platinum",p:240,w:1200}]);
-ext("case",[{n:"Mini-ITX compatto",p:85},{n:"Full tower",p:130},{n:"Mesh frontale airflow",p:65},{n:"Dual chamber vetro",p:110},{n:"Case silenzioso insonorizzato",p:100}]);
 var sel={},cur=null;
 try{sel=JSON.parse(localStorage.getItem("pcb")||"{}")}catch(e){sel={}}
 function save(){try{localStorage.setItem("pcb",JSON.stringify(sel))}catch(e){}}
@@ -155,14 +264,17 @@ function cat(id){return CATS.filter(function(x){return x.id===id})[0]}
 function saveCustom(){var o={};CATS.forEach(function(c){var a=c.items.filter(function(x){return x.custom});if(a.length)o[c.id]=a});try{localStorage.setItem("pcbc",JSON.stringify(o))}catch(e){}}
 try{var cu=JSON.parse(localStorage.getItem("pcbc")||"{}");Object.keys(cu).forEach(function(k){cu[k].forEach(function(x){cat(k).items.push(x)})})}catch(e){}
 function item(id){var c=CATS.filter(function(x){return x.id===id})[0];return sel[id]==null?null:c.items[sel[id]]}
+var SZ={ITX:1,mATX:2,ATX:3};
 function why(id,it){
-  var cpu=item("cpu"),mb=item("mb"),ram=item("ram");
+  var cpu=item("cpu"),mb=item("mb"),ram=item("ram"),cs=item("case");
   if(id==="mb"){
     if(cpu&&it.sock&&cpu.sock&&it.sock!==cpu.sock)return "Socket "+it.sock+", il processore è "+cpu.sock;
     if(ram&&it.ram&&ram.ram&&it.ram!==ram.ram)return "Usa "+it.ram+", la RAM è "+ram.ram;
+    if(cs&&it.f&&cs.f&&SZ[it.f]>SZ[cs.f])return "Formato "+it.f+", il case arriva a "+cs.f;
   }
   if(id==="cpu"&&mb&&it.sock&&mb.sock&&it.sock!==mb.sock)return "Socket "+it.sock+", la scheda madre è "+mb.sock;
   if(id==="ram"&&mb&&it.ram&&mb.ram&&it.ram!==mb.ram)return it.ram+", la scheda madre usa "+mb.ram;
+  if(id==="case"&&mb&&it.f&&mb.f&&SZ[mb.f]>SZ[it.f])return "Arriva a "+it.f+", la scheda madre è "+mb.f;
   return "";
 }
 function render(){
@@ -244,24 +356,30 @@ function cap(n){var m=/(\d+)\s*(TB|GB)/i.exec(n);return m?(m[2].toUpperCase()===
 function list(id){return cat(id).items.map(function(it,i){return {it:it,i:i}}).filter(function(x){return !x.it.custom})}
 function cheapest(a,f){var r=null;a.forEach(function(x){if(f(x.it)&&(!r||x.it.p<r.it.p))r=x});return r}
 function autoBuild(budget,use){
-  var avail=budget-ASSEMBLY_FEE,best=null,bs=-1;
-  var W={gaming:{g:.5,c:.3,r:.1,m:.1},work:{g:.15,c:.5,r:.25,m:.1},bal:{g:.35,c:.35,r:.15,m:.15}}[use];
-  var minR=use==="work"?32:16,maxR=use==="work"?96:32;
-  var ssdMin=(use==="work"&&avail>2500)?2000:(avail>1000?1000:500);
-  var ssd=cheapest(list("ssd"),function(x){return x.n.indexOf("HDD")<0&&cap(x.n)>=ssdMin});
-  var cs=cheapest(list("case"),function(){return true});
-  var G=list("gpu"),P=list("psu"),K=list("cool"),M=list("mb"),R=list("ram");
+  // t = livello di prestazioni (1-10). Si vince per prestazioni complessive, non per prezzo,
+  // e processore e scheda video devono essere vicini di livello (niente i3 con una 5080).
+  var avail=budget-ASSEMBLY_FEE,best=null,bs=-1e9;
+  var W={gaming:{g:1,c:.6,r:.5,s:.3},work:{g:.3,c:1,r:.8,s:.4},bal:{g:.8,c:.8,r:.5,s:.3}}[use];
+  var minR=use==="work"?32:16,maxR=use==="work"?96:32,minS=avail>1000?1000:500;
+  var G=list("gpu"),P=list("psu"),K=list("cool"),M=list("mb"),R=list("ram"),CS=list("case");
+  var S=list("ssd").filter(function(x){return x.it.n.indexOf("HDD")<0&&cap(x.it.n)>=minS});
+  var rScore=function(c){return c<=16?1:c<=32?2:c<=64?3:3.2},sScore=function(c){return c<1000?0:c<2000?1:c<4000?2:2.5};
   list("cpu").forEach(function(c){
     var co=cheapest(K,function(x){return x.w>=c.it.w*1.2});if(!co)return;
-    M.forEach(function(m){if(m.it.sock!==c.it.sock)return;
-      R.forEach(function(r){if(r.it.ram!==m.it.ram||cap(r.it.n)<minR||cap(r.it.n)>maxR)return;
-        G.forEach(function(g){
-          var need=Math.round((c.it.w+g.it.w+100)*1.3/50)*50;
-          var pu=cheapest(P,function(x){return x.w>=need});if(!pu)return;
-          var tot=c.it.p+m.it.p+r.it.p+g.it.p+pu.it.p+co.it.p+ssd.it.p+cs.it.p;
+    R.forEach(function(r){
+      var rc=cap(r.it.n);if(rc<minR||rc>maxR)return;
+      var m=cheapest(M,function(x){return x.sock===c.it.sock&&x.ram===r.it.ram&&(c.it.w<120||x.q>=2)});if(!m)return;
+      var cs=cheapest(CS,function(x){return SZ[x.f]>=SZ[m.it.f]});if(!cs)return;
+      G.forEach(function(g){
+        var d=g.it.t-c.it.t;
+        if(use==="work"?d>1:(d>2||d<-2))return;
+        var need=Math.round((c.it.w+g.it.w+100)*1.3/50)*50;
+        var pu=cheapest(P,function(x){return x.w>=need});if(!pu)return;
+        S.forEach(function(sd){
+          var tot=c.it.p+m.it.p+r.it.p+g.it.p+pu.it.p+co.it.p+sd.it.p+cs.it.p;
           if(tot>avail)return;
-          var sc=W.g*g.it.p+W.c*c.it.p+W.r*r.it.p+W.m*m.it.p;
-          if(sc>bs){bs=sc;best={cpu:c.i,mb:m.i,ram:r.i,gpu:g.i,psu:pu.i,cool:co.i,ssd:ssd.i,case:cs.i}}
+          var sc=W.g*g.it.t+W.c*c.it.t+W.r*rScore(rc)+W.s*sScore(cap(sd.it.n))-tot/10000;
+          if(sc>bs){bs=sc;best={cpu:c.i,mb:m.i,ram:r.i,gpu:g.i,psu:pu.i,cool:co.i,ssd:sd.i,case:cs.i}}
         })})})});
   return best;
 }
@@ -276,7 +394,7 @@ document.getElementById("auto").onclick=function(){
 function applyPrices(rows,when){
   rows.forEach(function(r){var c=cat(r.category);if(!c)return;
     var it=c.items.filter(function(x){return x.n===r.name&&!x.custom})[0];
-    if(it){it.p=+r.price}else{var o={n:r.name,p:+r.price},sp=r.specs||{};for(var k in sp)o[k]=sp[k];c.items.push(o)}});
+    if(it){it.p=+r.price;var s2=r.specs||{};for(var k2 in s2)it[k2]=s2[k2]}else{var o={n:r.name,p:+r.price},sp=r.specs||{};for(var k in sp)o[k]=sp[k];c.items.push(o)}});
   if(when)document.getElementById("upd").textContent="Prezzi aggiornati il "+new Date(when).toLocaleDateString("it-IT")+".";
   render();
 }
