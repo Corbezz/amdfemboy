@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Configura il tuo PC</title>
+<title>PC Builder: configura il tuo PC</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f5bff'/%3E%3Crect x='20' y='20' width='24' height='24' rx='4' fill='none' stroke='white' stroke-width='4'/%3E%3Cpath d='M26 12v8M38 12v8M26 44v8M38 44v8M12 26h8M12 38h8M44 26h8M44 38h8' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#2f5bff">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap">
 <style>
 :root{--bg:#eef1f5;--sf:#fff;--ink:#14202e;--mut:#5d6b7c;--ln:#d9dfe7;--ac:#2f5bff;--act:#fff;--ok:#16825a;--wa:#b36a00;--er:#c8372d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -69,13 +71,54 @@ input[type=range]{padding:0;accent-color:var(--ac);border:0;background:none}
 .links{display:block;margin-top:2px}
 .tools .links{margin-top:8px}
 .custom{display:grid;gap:8px;padding:14px 8px 4px;border-top:1px solid var(--ln);margin-top:8px}
+[hidden]{display:none!important}
+a.btn{text-decoration:none;display:inline-block}
+.top{position:sticky;top:0;z-index:15;background:var(--bg);border-bottom:1px solid var(--ln)}
+.topin{max-width:1100px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:18px}
+.top nav{display:flex;gap:4px}
+.top nav a{padding:8px 14px;border-radius:999px;color:var(--mut);text-decoration:none;font-weight:600}
+.top nav a.on{background:var(--sf);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ln)}
+.cart{margin-left:auto;padding:9px 16px;border-radius:999px;background:var(--ac);color:var(--act);font-weight:700;text-decoration:none;white-space:nowrap}
+.hero{background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:24px;margin-bottom:18px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.hero h1{margin:0 0 6px;max-width:none}.hero .lead{margin:0}
+.bar2{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.bar2 input{flex:1;min-width:200px}.bar2 select{width:auto}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px}
+.chip{border:1px solid var(--ln);background:var(--sf);border-radius:999px;padding:7px 14px;font-weight:600;cursor:pointer;white-space:nowrap}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pg{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.pc{background:var(--sf);border:1px solid var(--ln);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pc.in{box-shadow:0 0 0 2px var(--ac) inset}
+.tile{height:84px;display:flex;align-items:center;justify-content:center;font-weight:800;letter-spacing:.08em;font-size:22px;color:#fff}
+.t-cpu{background:linear-gradient(135deg,#2f4fd8,#4b3fc4)}.t-gpu{background:linear-gradient(135deg,#0e8a63,#0b6b8a)}
+.t-mb{background:linear-gradient(135deg,#b4540a,#a03a1b)}.t-ram{background:linear-gradient(135deg,#7b2fb5,#4f2fb5)}
+.t-ssd{background:linear-gradient(135deg,#0b6b8a,#1d4f9a)}.t-cool{background:linear-gradient(135deg,#0a7f8f,#0a5f8f)}
+.t-psu{background:linear-gradient(135deg,#8a6d0a,#8a4a0a)}.t-case{background:linear-gradient(135deg,#475569,#2b3442)}
+.pb{padding:12px 14px;flex:1}.pb small{color:var(--mut);font-weight:600}
+.pb h3{margin:2px 0 6px;font-size:16px;line-height:1.25}.sp{margin:0;color:var(--mut);font-size:13px}
+.pf{padding:0 14px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pc .why{color:var(--er);font-size:12px;padding:0 14px 8px;margin:0}
+.pc .links{padding:0 14px 12px;margin:0}
 @media(max-width:520px){.row{grid-template-columns:1fr auto}.cat{grid-column:1/-1;margin-bottom:-6px}.price{display:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>Configura il tuo PC, lo assemblo io</h1>
-  <p class="lead">Scegli i componenti, controlla che siano compatibili e invia la build. Ti rispondo con conferma e tempi di montaggio.</p>
+<header class="top"><div class="topin">
+  <a class="brand" href="#catalogo"><svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#2f5bff"/><rect x="20" y="20" width="24" height="24" rx="4" fill="none" stroke="#fff" stroke-width="4"/><path d="M26 12v8M38 12v8M26 44v8M38 44v8M12 26h8M12 38h8M44 26h8M44 38h8" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>PC Builder</a>
+  <nav><a href="#catalogo" id="nv-catalogo">Catalogo</a><a href="#build" id="nv-build">La tua build</a></nav>
+  <a class="cart" href="#build" id="cartBtn">La tua build</a>
+</div></header>
+<section id="v-cat" class="wrap">
+  <div class="hero"><div><h1>Scegli i pezzi del tuo PC</h1><p class="lead">Sfoglia il catalogo, aggiungi i componenti che ti piacciono e inviami la tua idea di build: la controllo e ti rispondo con conferma e tempi di montaggio.</p></div><a class="btn pri" href="#build">Crea una build dal budget</a></div>
+  <div class="bar2"><input id="cq" type="search" placeholder="Cerca un componente (es. 7800X3D, RTX 5070)" aria-label="Cerca un componente"><select id="csort" aria-label="Ordina"><option value="def">Consigliati</option><option value="asc">Prezzo crescente</option><option value="desc">Prezzo decrescente</option></select></div>
+  <div class="chips" id="chips"></div>
+  <p class="note" id="cnt"></p>
+  <div class="pg" id="pg"></div>
+</section>
+<section id="v-build" class="wrap" hidden>
+  <h1>La tua build</h1>
+  <p class="lead">Controlla i pezzi, completa i dati e inviami la richiesta. Puoi anche <a href="#catalogo" style="color:var(--ac)">tornare al catalogo</a> per aggiungerne altri.</p>
   <div class="grid">
     <div>
       <div class="card auto"><h2>Build automatica dal budget</h2>
@@ -105,8 +148,8 @@ input[type=range]{padding:0;accent-color:var(--ac);border:0;background:none}
       </div>
     </aside>
   </div>
-</div>
-<div class="bar"><div><small style="color:var(--mut)">Totale</small><div class="price" id="barTot"></div></div><button class="btn pri" id="goSend">Invia la build</button></div>
+</section>
+<div class="bar"><div><small style="color:var(--mut)">Totale</small><div class="price" id="barTot"></div></div><button class="btn pri" id="goSend">Vedi la build</button></div>
 <div class="ov" id="ov"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="st"><div class="sh"><h3 id="st"></h3><button class="btn" id="cl">Chiudi</button></div><div class="tools"><input id="q" type="search" placeholder="Cerca un componente (es. 7800X3D)"><span class="links" id="shops"></span></div><div class="list" id="list"></div></div></div>
 <div class="toast" id="toast"></div>
 <script>
@@ -287,6 +330,8 @@ function render(){
   var n=Object.keys(sel).length,fee=n?ASSEMBLY_FEE:0;
   document.getElementById("tot").innerHTML='<div class="tot"><span>Componenti</span><span>'+EUR(sum)+'</span></div><div class="tot"><span>Assemblaggio</span><span>'+EUR(fee)+'</span></div><div class="tot big"><span>Totale</span><span>'+EUR(sum+fee)+'</span></div>';
   document.getElementById("barTot").textContent=EUR(sum+fee);
+  document.getElementById("cartBtn").textContent="La tua build: "+n+(n===1?" pezzo":" pezzi")+" · "+EUR(sum+fee);
+  renderCat();
   var cl=[],cpu=item("cpu"),gpu=item("gpu"),psu=item("psu"),co=item("cool");
   if(!n)cl.push(["w","Scegli il primo componente per iniziare."]);
   var bad=0;CATS.forEach(function(c){var it=item(c.id);if(it&&why(c.id,it)){bad++;cl.push(["e",c.name+": "+why(c.id,it)])}});
@@ -351,7 +396,7 @@ document.getElementById("send").onclick=function(){
 };
 document.getElementById("copy").onclick=function(){var t=summary();
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast("Riepilogo copiato")},function(){toast("Copia non riuscita")})}else toast("Copia non disponibile")};
-document.getElementById("goSend").onclick=function(){document.getElementById("nm").scrollIntoView({behavior:"smooth",block:"center"})};
+document.getElementById("goSend").onclick=function(){if(location.hash!=="#build"){location.hash="#build";return}document.getElementById("nm").scrollIntoView({behavior:"smooth",block:"center"})};
 function cap(n){var m=/(\d+)\s*(TB|GB)/i.exec(n);return m?(m[2].toUpperCase()==="TB"?m[1]*1000:+m[1]):0}
 function list(id){return cat(id).items.map(function(it,i){return {it:it,i:i}}).filter(function(x){return !x.it.custom})}
 function cheapest(a,f){var r=null;a.forEach(function(x){if(f(x.it)&&(!r||x.it.p<r.it.p))r=x});return r}
@@ -411,8 +456,32 @@ function loadPrices(){
   .then(function(rows){var w=rows.reduce(function(m,r){return r.price_updated_at>m?r.price_updated_at:m},"");applyPrices(rows,w)})
   .catch(loadFile);
 }
+var catF="all",catQ="",catS="def";
+var TAG={cpu:"CPU",mb:"MB",ram:"RAM",gpu:"GPU",ssd:"SSD",cool:"COOL",psu:"PSU","case":"CASE"};
+function escH(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function specLine(id,it){var a=[];if(it.sock)a.push(it.sock);if(it.ram)a.push(it.ram);if(it.w)a.push(id==="cpu"?"TDP "+it.w+" W":it.w+" W");if(it.f)a.push(it.f);if(it.t)a.push("Livello "+it.t+"/10");return a.join(" · ")}
+function renderCat(){
+  document.getElementById("chips").innerHTML='<button class="chip'+(catF==="all"?' on':'')+'" data-f="all">Tutti</button>'+CATS.map(function(c){return '<button class="chip'+(catF===c.id?' on':'')+'" data-f="'+c.id+'">'+c.name+'</button>'}).join("");
+  var L=[];
+  CATS.forEach(function(c){if(catF!=="all"&&c.id!==catF)return;c.items.forEach(function(it,i){if(it.custom)return;if(catQ&&(it.n+" "+c.name).toLowerCase().indexOf(catQ)<0)return;L.push({c:c,it:it,i:i})})});
+  if(catS==="asc")L.sort(function(a,b){return a.it.p-b.it.p});else if(catS==="desc")L.sort(function(a,b){return b.it.p-a.it.p});
+  document.getElementById("pg").innerHTML=L.map(function(x){var c=x.c,it=x.it,on=sel[c.id]===x.i,w=on?"":why(c.id,it);
+    return '<article class="pc'+(on?' in':'')+'"><div class="tile t-'+c.id+'">'+TAG[c.id]+'</div><div class="pb"><small>'+c.name+'</small><h3>'+escH(it.n)+'</h3><p class="sp">'+specLine(c.id,it)+'</p></div>'+(w?'<p class="why">'+w+'</p>':'')+'<div class="pf"><span class="price">'+EUR(it.p)+'</span><button class="btn'+(on?'':' pri')+'" data-c="'+c.id+'" data-i="'+x.i+'"'+(w?' disabled':'')+'>'+(on?'Nella build ✓':'Aggiungi')+'</button></div><span class="links">'+shopLinks(it.n)+'</span></article>'}).join("")||'<p class="note">Nessun componente trovato.</p>';
+  document.getElementById("cnt").textContent=L.length+" componenti";
+}
+document.getElementById("chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;catF=b.dataset.f;renderCat()});
+document.getElementById("cq").addEventListener("input",function(){catQ=this.value.trim().toLowerCase();renderCat()});
+document.getElementById("csort").addEventListener("change",function(){catS=this.value;renderCat()});
+document.getElementById("pg").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||b.disabled)return;var id=b.dataset.c,i=+b.dataset.i;
+  if(sel[id]===i){delete sel[id];toast("Rimosso dalla build")}else{sel[id]=i;toast("Aggiunto alla build")}render()});
+function show(){var v=location.hash==="#build"?"build":"catalogo";
+  document.getElementById("v-cat").hidden=v!=="catalogo";document.getElementById("v-build").hidden=v!=="build";
+  ["catalogo","build"].forEach(function(k){document.getElementById("nv-"+k).classList.toggle("on",k===v)});
+  document.getElementById("goSend").textContent=v==="build"?"Invia la build":"Vedi la build";window.scrollTo(0,0)}
+window.addEventListener("hashchange",show);
 loadPrices();
 render();
+show();
 </script>
 </body>
 </html>
